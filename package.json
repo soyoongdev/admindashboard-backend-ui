@@ -13,9 +13,7 @@
     "prettier:fix": "prettier --write \"src/**/(*.tsx|*.ts|*.css|*.scss)\""
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.8.0",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
+    "antd": "^5.8.5",
     "framer-motion": "^10.16.2",
     "lucide-react": "^0.274.0",
     "react": "^18.2.0",
