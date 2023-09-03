@@ -1,5 +1,4 @@
 import { forwardRef } from 'react'
-import { useDarkMode } from '~/hooks/useDarkMode'
 import { cn } from '~/utils/cn'
 
 interface NavbarItemProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -8,21 +7,11 @@ interface NavbarItemProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const NavbarItem = forwardRef<HTMLDivElement, NavbarItemProps>(
   ({ onChildClick, className }, ref) => {
-    const { isDarkMode } = useDarkMode()
-
     return (
       <div
         ref={ref}
         className={cn(
-          'flex w-full flex-row items-center gap-2 rounded-md p-2 text-light transition-colors duration-200',
-          {
-            'hover:bg-muted hover:text-primary': isDarkMode,
-            'bg-muted text-primary': isDarkMode
-          },
-          {
-            'text-dark hover:bg-dark hover:text-white': !isDarkMode,
-            'bg-dark text-white': !isDarkMode
-          },
+          'flex w-full flex-row items-center gap-2 rounded-md bg-dark p-2 text-light text-white transition-colors duration-200 dark:text-dark dark:hover:bg-dark dark:hover:text-white',
           className
         )}
         onClick={onChildClick}

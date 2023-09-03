@@ -1,10 +1,12 @@
-import { useLocalStorage, useMediaQuery, useUpdateEffect } from 'usehooks-ts'
+import { useEffect } from 'react'
+import { useLocalStorage, useMediaQuery } from 'usehooks-ts'
 
-const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
+export const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 
 interface UseDarkModeOutput {
   isDarkMode: boolean
   toggleDarkMode: () => void
+  disableDarkLightMode: () => void
 }
 
 export function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
@@ -15,13 +17,17 @@ export function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
   )
 
   // Update darkMode if os prefers changes
-  useUpdateEffect(() => {
-    setDarkMode(isDarkOS)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isDarkOS])
+  useEffect(() => {
+    if (isDarkOS && isDarkMode) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [isDarkMode, isDarkOS])
 
   return {
     isDarkMode,
-    toggleDarkMode: () => setDarkMode((prev) => !prev)
+    toggleDarkMode: () => setDarkMode((prev) => !prev),
+    disableDarkLightMode: () => localStorage.removeItem('theme')
   }
 }

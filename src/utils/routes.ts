@@ -1,45 +1,69 @@
-import { Home, ClipboardList, BarChart2, Users2, Settings } from 'lucide-react'
-import DashboardPage from '~/pages/dashboard'
-import ProfilePage from '~/pages/profile'
-import SettingsPage from '~/pages/settings'
-import StatisticsPage from '~/pages/statistics'
-import TaskPage from '~/pages/task'
+import {
+  Home,
+  Users2,
+  Building2,
+  CalendarDays,
+  Send,
+  AlignStartVertical,
+  PencilRuler
+} from 'lucide-react'
+import Dashboard from '~/pages/dashboard'
+import Task from '~/pages/users'
 import { SidebarRoute } from '~/vite-env'
+import Companies from '~/pages/company'
+import Users from '~/pages/users'
+import Resumes from '~/pages/reumes'
+import Levels from '~/pages/levels'
+import Roles from '~/pages/roles'
 
 export const sidebarRoutes: SidebarRoute[] = [
   {
     path: '/dashboard',
     name: 'Dashboard',
     icon: Home,
-    component: DashboardPage,
+    component: Dashboard,
     layout: '/admin'
   },
   {
-    path: '/task',
-    name: 'My Tasks',
-    icon: ClipboardList,
-    component: TaskPage,
+    path: '/companies',
+    name: 'Companies',
+    icon: Building2,
+    component: Companies,
     layout: '/admin'
   },
   {
-    path: '/statistics',
-    name: 'Statistics',
-    icon: BarChart2,
-    component: StatisticsPage,
-    layout: '/admin'
-  },
-  {
-    path: '/profile',
-    name: 'Profiles',
+    path: '/users',
+    name: 'Users',
     icon: Users2,
-    component: ProfilePage,
+    component: Users,
     layout: '/admin'
   },
   {
-    path: '/settings',
-    name: 'Settings',
-    icon: Settings,
-    component: SettingsPage,
+    path: '/jobs',
+    name: 'Jobs',
+    icon: CalendarDays,
+    component: Task,
+    layout: '/admin'
+  },
+  {
+    path: '/resumes',
+    name: 'Resumes',
+    icon: Send,
+    component: Resumes,
+    layout: '/admin'
+  },
+  {
+    path: '/levels',
+    name: 'Levels',
+    icon: AlignStartVertical,
+    component: Levels,
+    layout: '/admin'
+  },
+  {
+    path: '/roles',
+    name: 'Roles',
+    icon: PencilRuler,
+    component: Roles,
     layout: '/admin'
   }
 ]

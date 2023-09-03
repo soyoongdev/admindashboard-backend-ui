@@ -1,23 +1,14 @@
 import { forwardRef } from 'react'
-import { useDarkMode } from '~/hooks/useDarkMode'
 import { cn } from '~/utils/cn'
 
 interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Layout = forwardRef<HTMLDivElement, LayoutProps>(
   ({ children, className }, ref) => {
-    const { isDarkMode } = useDarkMode()
-
     return (
       <div
         className={cn(
-          'h-full w-full',
-          {
-            'bg-light': !isDarkMode
-          },
-          {
-            'bg-dark': isDarkMode
-          },
+          'min-w-screen darK:bg-dark min-h-screen bg-light',
           className
         )}
         ref={ref}

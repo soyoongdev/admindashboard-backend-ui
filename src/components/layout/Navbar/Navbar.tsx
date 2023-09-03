@@ -1,11 +1,8 @@
-import { useDarkMode } from '~/hooks/useDarkMode'
-import { cn } from '~/utils/cn'
 import type { MenuProps } from 'antd'
 import { Button, Badge, Avatar, Dropdown, Divider } from 'antd'
 import { Bell, ChevronDown } from 'lucide-react'
 
 const Navbar = () => {
-  const { isDarkMode } = useDarkMode()
   const items: MenuProps['items'] = [
     {
       key: '1',
@@ -47,22 +44,12 @@ const Navbar = () => {
 
   return (
     <div className='flex flex-col gap-2'>
-      <div className='flex h-full max-h-[80px] w-full flex-row justify-between'>
+      <div className='flex h-fit min-h-[80px] w-full flex-row justify-between'>
         <div className='flex flex-col gap-2'>
-          <h1
-            className={cn('text-start text-3xl font-bold', {
-              'text-white': isDarkMode,
-              'text-dark': !isDarkMode
-            })}
-          >
+          <h1 className='text-start text-3xl font-bold text-dark dark:text-white'>
             Manage your projects
           </h1>
-          <p
-            className={cn({
-              'text-light': isDarkMode,
-              'text-muted': !isDarkMode
-            })}
-          >
+          <p className='text-muted dark:text-light'>
             Track your projects, tasks & team activity here
           </p>
         </div>
@@ -98,7 +85,7 @@ const Navbar = () => {
                 <Avatar
                   shape='circle'
                   size='large'
-                  icon={<img src='./public/haunguyen.jpg' />}
+                  icon={<img src='/src/assets/haunguyen.jpg' />}
                 />
               </Button>
               <ChevronDown />
@@ -106,12 +93,7 @@ const Navbar = () => {
           </Dropdown>
         </div>
       </div>
-      <Divider
-        className={cn('h-[2px]', {
-          'bg-muted': isDarkMode,
-          'bg-border': !isDarkMode
-        })}
-      />
+      <Divider className='h-[2px] bg-muted dark:bg-white' />
     </div>
   )
 }
