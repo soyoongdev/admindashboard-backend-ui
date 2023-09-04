@@ -3,11 +3,9 @@ import SidebarItem from './sidebar-item'
 import logo from '~/assets/react.svg'
 import { useState } from 'react'
 import ToggleDarkMode from '~/components/ui/toggle-dark-mode'
-import { useDarkMode } from '~/hooks/useDarkMode'
 
 function Sidebar() {
   const [index, setIndex] = useState(0)
-  const { toggleDarkMode } = useDarkMode()
 
   return (
     <div className='w-full max-w-[250px] bg-white p-8 dark:bg-secondary'>
@@ -31,7 +29,7 @@ function Sidebar() {
           })}
         </div>
         <div className='relative flex items-center'>
-          <ToggleDarkMode onClick={toggleDarkMode} />
+          <ToggleDarkMode />
         </div>
       </div>
     </div>

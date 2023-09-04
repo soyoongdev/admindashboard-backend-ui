@@ -1,33 +1,46 @@
-import { useEffect } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useLocalStorage, useMediaQuery } from 'usehooks-ts'
 
 export const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'
 
 interface UseDarkModeOutput {
-  isDarkMode: boolean
-  toggleDarkMode: () => void
-  disableDarkLightMode: () => void
+  theme: 'dark' | 'light' | 'system'
+  toggleDarkLightMode: () => void
+  setTheme: (theme: 'dark' | 'light' | 'system') => void
 }
 
-export function useDarkMode(defaultValue?: boolean): UseDarkModeOutput {
+export function useDarkMode(defaultValue: 'dark' | 'light' | 'system' = 'system'): UseDarkModeOutput {
   const isDarkOS = useMediaQuery(COLOR_SCHEME_QUERY)
-  const [isDarkMode, setDarkMode] = useLocalStorage<boolean>(
-    'usehooks-ts-dark-mode',
-    defaultValue ?? isDarkOS ?? false
-  )
+  const [localTheme, setLocalTheme] = useLocalStorage<'dark' | 'light' | 'system'>('theme', defaultValue)
+  const [theme, setTheme] = useState<'dark' | 'light' | 'system'>(() => {
+    return localTheme || (isDarkOS ? 'dark' : 'light')
+  })
 
-  // Update darkMode if os prefers changes
+  const onWindowWatch = () => {
+    document.documentElement.classList.toggle('dark', localTheme === 'dark' || (!('theme' in localStorage) && isDarkOS))
+  }
+
   useEffect(() => {
-    if (isDarkOS && isDarkMode) {
-      document.documentElement.classList.add('dark')
+    onWindowWatch()
+  }, [])
+
+  useEffect(() => {
+    if (theme === 'system') {
+      localStorage.removeItem('theme')
+      onWindowWatch()
     } else {
-      document.documentElement.classList.remove('dark')
+      document.documentElement.classList.toggle('dark', theme === 'dark')
+      setLocalTheme(theme)
     }
-  }, [isDarkMode, isDarkOS])
+  }, [theme])
+
+  const toggleDarkLightMode = useCallback(() => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+  }, [])
 
   return {
-    isDarkMode,
-    toggleDarkMode: () => setDarkMode((prev) => !prev),
-    disableDarkLightMode: () => localStorage.removeItem('theme')
+    theme,
+    toggleDarkLightMode,
+    setTheme
   }
 }
