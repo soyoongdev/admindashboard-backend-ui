@@ -12,20 +12,11 @@ function Sidebar() {
       <div className='flex h-full w-full flex-col justify-between'>
         <div className='flex flex-row items-center gap-2'>
           <img src={logo} alt='logo' className='h-10 w-10 object-center' />
-          <h1 className='text-2xl font-semibold text-light dark:text-dark'>
-            Assist
-          </h1>
+          <h1 className='text-2xl font-semibold text-light dark:text-dark'>Assist</h1>
         </div>
         <div className='flex flex-col items-start gap-5'>
           {sidebarRoutes.map((item, i) => {
-            return (
-              <SidebarItem
-                key={i}
-                item={item}
-                isActive={index === i}
-                onClick={() => setIndex(i)}
-              />
-            )
+            return <SidebarItem key={i} item={item} isActive={index === i} onClick={() => setIndex(i)} />
           })}
         </div>
         <div className='relative flex items-center'>

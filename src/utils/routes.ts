@@ -1,12 +1,4 @@
-import {
-  Home,
-  Users2,
-  Building2,
-  CalendarDays,
-  Send,
-  AlignStartVertical,
-  PencilRuler
-} from 'lucide-react'
+import { Home, Users2, Building2, CalendarDays, Send, AlignStartVertical, PencilRuler } from 'lucide-react'
 import Dashboard from '~/pages/dashboard'
 import Task from '~/pages/users'
 import { SidebarRoute } from '~/vite-env'

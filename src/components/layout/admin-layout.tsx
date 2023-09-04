@@ -12,13 +12,7 @@ function AdminLayout() {
         <Navbar />
         <Routes>
           {sidebarRoutes.map((route, index) => {
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                element={<route.component />}
-              />
-            )
+            return <Route key={index} path={route.path} element={<route.component />} />
           })}
         </Routes>
       </div>

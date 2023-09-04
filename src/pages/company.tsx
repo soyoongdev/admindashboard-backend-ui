@@ -11,17 +11,10 @@ const Company = () => {
             <label htmlFor='input-name' className='text-dark dark:text-white'>
               Name:
             </label>
-            <Input
-              id='input-name'
-              className='bg-dark dark:bg-white'
-              placeholder='Name'
-            />
+            <Input id='input-name' className='bg-dark dark:bg-white' placeholder='Name' />
           </div>
           <div className='flex flex-row items-center gap-2'>
-            <label
-              htmlFor='input-address'
-              className='text-dark dark:text-white'
-            >
+            <label htmlFor='input-address' className='text-dark dark:text-white'>
               Address:
             </label>
             <Input id='input-address' className='input' placeholder='Address' />
@@ -31,10 +24,7 @@ const Company = () => {
           <Button type='default' className='text-dark dark:text-white'>
             Reset
           </Button>
-          <Button
-            type='default'
-            className='bg-dark text-white dark:bg-light dark:text-dark'
-          >
+          <Button type='default' className='bg-dark text-white dark:bg-light dark:text-dark'>
             Search
           </Button>
         </HStack>
