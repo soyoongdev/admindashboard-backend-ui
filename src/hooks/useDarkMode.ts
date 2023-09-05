@@ -20,9 +20,7 @@ export function useDarkMode(defaultValue: 'dark' | 'light' | 'system' = 'system'
     document.documentElement.classList.toggle('dark', localTheme === 'dark' || (!('theme' in localStorage) && isDarkOS))
   }
 
-  useEffect(() => {
-    onWindowWatch()
-  }, [])
+  onWindowWatch()
 
   useEffect(() => {
     if (theme === 'system') {
