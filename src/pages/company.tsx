@@ -1,6 +1,7 @@
-import { Button, Input } from 'antd'
 import HStack from '~/components/layout/stack/hstack'
 import VStack from '~/components/layout/stack/vstack'
+import { Button } from '~/components/ui/button'
+import { Input } from '~/components/ui/input'
 
 const Company = () => {
   return (
@@ -21,12 +22,8 @@ const Company = () => {
           </div>
         </HStack>
         <HStack className='sm:flex-col md:flex-row' spacing={2}>
-          <Button type='default' className='text-dark dark:text-white'>
-            Reset
-          </Button>
-          <Button type='default' className='bg-dark text-white dark:bg-light dark:text-dark'>
-            Search
-          </Button>
+          <Button className='text-dark dark:text-white'>Reset</Button>
+          <Button className='bg-dark dark:bg-light dark:text-dark text-white'>Search</Button>
         </HStack>
       </HStack>
     </VStack>
