@@ -1,51 +1,71 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: 'class',
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+module.exports = {
+  darkMode: ['class'],
+  content: ['./src/**/*.{ts,tsx}'],
   theme: {
     container: {
       center: true,
+      padding: '2rem',
       screens: {
-        '2xl': '1440px'
+        '2xl': '1400px'
       }
     },
-    colors: {
-      white: '#ffffff',
-      light: '#fafafa',
-      dark: '#060e0e',
-      foreground: '#060e0e',
-      border: '#979aa4',
-      input: '#161b1b',
-      primary: {
-        DEFAULT: '#36bcba',
-        foreground: '#f8fafc'
+    extend: {
+      colors: {
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))'
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))'
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))'
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))'
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))'
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))'
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))'
+        }
       },
-      secondary: {
-        DEFAULT: '#1a1f1f',
-        foreground: '#f8fafc'
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)'
       },
-      destructive: {
-        DEFAULT: '#f65606',
-        foreground: '#fafafa'
+      keyframes: {
+        'accordion-down': {
+          from: { height: 0 },
+          to: { height: 'var(--radix-accordion-content-height)' }
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: 0 }
+        }
       },
-      muted: {
-        DEFAULT: '#252A31',
-        foreground: '#f8fafc'
-      },
-      accent: {
-        DEFAULT: '#36bcba',
-        foreground: '#f8fafc'
-      },
-      popover: {
-        DEFAULT: '#f8fafc',
-        foreground: '#060e0e'
-      },
-      card: {
-        DEFAULT: '#1b1f1f',
-        foreground: '#f8fafc'
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out'
       }
-    },
-    extend: {}
+    }
   },
-  plugins: ['prettier-plugin-tailwindcss']
+  plugins: [require('tailwindcss-animate')]
 }
