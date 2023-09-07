@@ -1,61 +1,67 @@
 import { Home, Users2, Building2, CalendarDays, Send, AlignStartVertical, PencilRuler } from 'lucide-react'
 import Dashboard from '~/pages/dashboard'
 import Task from '~/pages/users'
-import { SidebarRoute } from '~/vite-env'
 import Companies from '~/pages/company'
 import Users from '~/pages/users'
 import Resumes from '~/pages/reumes'
 import Levels from '~/pages/levels'
 import Roles from '~/pages/roles'
+import { SidebarItems } from '~/vite-env'
+import CompanyDetail from '~/pages/company-detail'
 
-export const sidebarRoutes: SidebarRoute[] = [
+export const publicRoutes: SidebarItems[] = [
   {
-    path: '/dashboard',
+    path: '/admin/dashboard',
     name: 'Dashboard',
     icon: Home,
     component: Dashboard,
-    layout: '/admin'
+    layout: 'admin'
   },
   {
-    path: '/companies',
-    name: 'Companies',
+    path: '/admin/companies',
+    name: 'Company',
     icon: Building2,
     component: Companies,
-    layout: '/admin'
+    layout: 'admin',
+    children: {
+      path: ':companyID',
+      name: 'Company details',
+      component: CompanyDetail
+    }
   },
   {
-    path: '/users',
-    name: 'Users',
+    path: '/admin/users',
+    name: 'User',
     icon: Users2,
     component: Users,
-    layout: '/admin'
+    layout: 'admin'
   },
   {
-    path: '/jobs',
-    name: 'Jobs',
+    path: '/admin/jobs',
+    name: 'Job',
     icon: CalendarDays,
     component: Task,
-    layout: '/admin'
+    layout: 'admin'
   },
   {
-    path: '/resumes',
-    name: 'Resumes',
+    path: '/admin/resumes',
+    name: 'Resume',
     icon: Send,
     component: Resumes,
-    layout: '/admin'
+    layout: 'admin'
   },
   {
-    path: '/levels',
-    name: 'Levels',
+    path: '/admin/levels',
+    name: 'Level',
     icon: AlignStartVertical,
     component: Levels,
-    layout: '/admin'
+    layout: 'admin'
   },
   {
-    path: '/roles',
-    name: 'Roles',
+    path: '/admin/roles',
+    name: 'Role',
     icon: PencilRuler,
     component: Roles,
-    layout: '/admin'
+    layout: 'admin'
   }
 ]

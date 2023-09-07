@@ -1,11 +1,11 @@
 import { Button } from '~/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs'
 import { CalendarDateRangePicker } from '~/components/ui/data-range-picker'
 import { MainNav } from '~/components/ui/main-nav'
 import { Overview } from '~/components/ui/overview'
 import { RecentSales } from '~/components/ui/recent-sales'
 import { Search } from '~/components/ui/search'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs'
 import TeamSwitcher from '~/components/ui/team-switcher'
 import { UserNav } from '~/components/ui/user-nav'
 
@@ -13,8 +13,16 @@ export default function DashboardPage() {
   return (
     <>
       <div className='md:hidden'>
-        <img src='/examples/dashboard-light.png' alt='Dashboard' className='block h-[866px] w-[1280px] dark:hidden' />
-        <img src='/examples/dashboard-dark.png' alt='Dashboard' className='hidden h-[866px] w-[1280px] dark:block' />
+        <img
+          src='https://ui.shadcn.com/_next/image?url=%2Fexamples%2Fdashboard-light.png&w=1920&q=75'
+          alt='Dashboard'
+          className='block h-[866px] w-[1280px] object-contain dark:hidden'
+        />
+        <img
+          src='https://ui.shadcn.com/_next/image?url=%2Fexamples%2Fdashboard-dark.png&w=1920&q=75'
+          alt='Dashboard'
+          className='hidden h-[866px] w-[1280px] dark:block'
+        />
       </div>
       <div className='hidden flex-col md:flex'>
         <div className='border-b'>

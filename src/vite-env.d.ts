@@ -1,16 +1,16 @@
 /// <reference types="vite/client" />
 import { LucideIcon } from 'lucide-react'
 
-/* type */
-export type SidebarRoute = {
+/* interface */
+
+export interface SidebarItems {
   path: string
   name: string
-  icon: LucideIcon
-  component: () => JSX.Element
-  layout: string
+  icon?: LucideIcon
+  component: any
+  layout?: string
+  children?: SidebarItems
 }
-
-/* interface */
 
 export interface Company {
   companyID: number

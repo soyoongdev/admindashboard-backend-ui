@@ -1,7 +1,7 @@
 import { Monitor, Moon, SunMedium } from 'lucide-react'
 import { forwardRef } from 'react'
 import { useDarkMode } from '~/hooks/useDarkMode'
-import { cn } from '~/utils/cn'
+import { cn } from '~/lib/utils'
 
 interface ToggleDarkModeProps extends React.HTMLAttributes<HTMLButtonElement> {}
 
@@ -20,7 +20,7 @@ const ToggleDarkMode = forwardRef<HTMLButtonElement, ToggleDarkModeProps>(({ onC
     >
       <div
         className={cn(
-          'absolute z-0 h-9 w-9 rounded-full bg-dark transition-transform duration-300 ease-in-out dark:bg-primary',
+          'bg-dark absolute z-0 h-9 w-9 rounded-full transition-transform duration-300 ease-in-out dark:bg-primary',
           {
             'translate-x-[4px]': theme === 'light',
             'translate-x-[50px]': theme === 'dark',
@@ -32,7 +32,7 @@ const ToggleDarkMode = forwardRef<HTMLButtonElement, ToggleDarkModeProps>(({ onC
         onClick={() => setTheme('light')}
         size={24}
         className={cn(
-          'relative left-[10px] z-10 h-6 w-6 text-dark opacity-75 transition-colors duration-500 ease-in-out dark:text-light',
+          'text-dark dark:text-light relative left-[10px] z-10 h-6 w-6 opacity-75 transition-colors duration-500 ease-in-out',
           {
             'text-primary opacity-100': theme === 'light'
           }
@@ -41,7 +41,7 @@ const ToggleDarkMode = forwardRef<HTMLButtonElement, ToggleDarkModeProps>(({ onC
       <Moon
         onClick={() => setTheme('dark')}
         size={24}
-        className={cn('z-10 h-6 w-6 text-dark opacity-75 transition-colors duration-500 ease-in-out dark:text-light', {
+        className={cn('text-dark dark:text-light z-10 h-6 w-6 opacity-75 transition-colors duration-500 ease-in-out', {
           'text-primary opacity-100': theme === 'dark'
         })}
       />
@@ -49,7 +49,7 @@ const ToggleDarkMode = forwardRef<HTMLButtonElement, ToggleDarkModeProps>(({ onC
         onClick={() => setTheme('system')}
         size={24}
         className={cn(
-          'relative right-[10px] z-10 h-6 w-6 text-dark opacity-75 transition-colors duration-500 ease-in-out dark:text-light',
+          'text-dark dark:text-light relative right-[10px] z-10 h-6 w-6 opacity-75 transition-colors duration-500 ease-in-out',
           {
             'text-primary opacity-100': theme === 'system'
           }

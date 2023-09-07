@@ -1,14 +1,14 @@
-import { VStack } from '~/components/layout/stack'
-import Breadcrumb from '~/components/ui/breadcrumb'
+import React from 'react'
 import { usePath } from '~/hooks/usePath'
-import CompanyList from './company-list'
+import { cn } from '~/lib/utils'
 
-const CompanyPage = () => {
+interface CompanyDetailProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const CompanyDetail = ({ className }: CompanyDetailProps) => {
   const path = usePath()
 
   return (
-    <VStack className=''>
-      <CompanyList />
+    <div className={cn('', className)}>
       {/* <ul>
         {path.paths.map((item, index) => {
           return (
@@ -23,9 +23,8 @@ const CompanyPage = () => {
           )
         })}
       </ul> */}
-      <Breadcrumb />
-    </VStack>
+    </div>
   )
 }
 
-export default CompanyPage
+export default CompanyDetail

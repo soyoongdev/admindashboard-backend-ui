@@ -1,30 +1,26 @@
-import { sidebarRoutes } from '~/utils/routes'
+import { useLocation } from 'react-router-dom'
+import { TypographyH3 } from '~/components/ui/typography'
+import { publicRoutes } from '~/lib/routes'
+import { cn } from '~/lib/utils'
 import SidebarItem from './sidebar-item'
-import logo from '~/assets/react.svg'
-import { useState } from 'react'
-import ToggleDarkMode from '~/components/ui/toggle-dark-mode'
 
-function Sidebar() {
-  const [index, setIndex] = useState(0)
+interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export function Sidebar({ className }: SidebarProps) {
+  const location = useLocation()
 
   return (
-    <div className='w-full max-w-[250px] bg-white p-8 dark:bg-secondary'>
-      <div className='flex h-full w-full flex-col justify-between'>
-        <div className='flex flex-row items-center gap-2'>
-          <img src={logo} alt='logo' className='h-10 w-10 object-center' />
-          <h1 className='text-light dark:text-dark text-2xl font-semibold'>Assist</h1>
-        </div>
-        <div className='flex flex-col items-start gap-5'>
-          {sidebarRoutes.map((item, i) => {
-            return <SidebarItem key={i} item={item} isActive={index === i} onClick={() => setIndex(i)} />
-          })}
-        </div>
-        <div className='relative flex items-center'>
-          <ToggleDarkMode />
+    <div className={cn('my-4 w-full max-w-[267px] border-r pb-12', className)}>
+      <div className='w-full space-y-4 py-4'>
+        <div className='w-full px-3 py-2'>
+          <TypographyH3 className='mb-2 px-4 tracking-tight'>Discover</TypographyH3>
+          <div className='flex w-full flex-col gap-1 space-y-1'>
+            {publicRoutes.map((route, index) => {
+              return <SidebarItem key={index} item={route} isActive={location.pathname === route.path} />
+            })}
+          </div>
         </div>
       </div>
     </div>
   )
 }
-
-export default Sidebar

@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useLocalStorage, useMediaQuery } from 'usehooks-ts'
 
 export const COLOR_SCHEME_QUERY = '(prefers-color-scheme: dark)'

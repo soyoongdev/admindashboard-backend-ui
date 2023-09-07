@@ -1,18 +1,14 @@
-import { Route, Routes } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import Layout from './layout'
-import Sidebar from './sidebar/sidebar'
-import { sidebarRoutes } from '~/utils/routes'
+import { Sidebar } from './sidebar/sidebar'
 
 function AdminLayout() {
   return (
-    <Layout className={'flex flex-row'}>
+    <Layout className='flex flex-row'>
       <Sidebar />
-      <div className='flex h-full w-full flex-col p-8'>
-        <Routes>
-          {sidebarRoutes.map((route, index) => {
-            return <Route key={index} path={route.path} element={<route.component />} />
-          })}
-        </Routes>
+      <div className='flex h-full w-full flex-col'>
+        {/* <Navbar /> */}
+        <Outlet />
       </div>
     </Layout>
   )

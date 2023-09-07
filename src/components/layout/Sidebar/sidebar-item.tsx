@@ -1,28 +1,21 @@
+import { ShieldQuestion } from 'lucide-react'
 import { forwardRef } from 'react'
 import { Link } from 'react-router-dom'
-import { cn } from '~/utils/cn'
-import { SidebarRoute } from '~/vite-env'
+import { Button } from '~/components/ui/button'
+import { SidebarItems } from '~/vite-env'
 
 interface SidebarItemProps extends React.HTMLAttributes<HTMLAnchorElement> {
-  item: SidebarRoute
+  item: SidebarItems
   isActive: boolean
 }
 
 const SidebarItem = forwardRef<HTMLAnchorElement, SidebarItemProps>(({ item, isActive, className }, ref) => {
   return (
-    <Link
-      ref={ref}
-      to={item.path}
-      className={cn(
-        'flex w-full flex-row gap-2 rounded-md p-2 text-dark transition-colors duration-200 hover:bg-dark hover:text-white dark:text-light dark:hover:bg-muted dark:hover:text-primary',
-        {
-          'bg-dark text-white dark:bg-muted dark:text-primary': isActive
-        },
-        className
-      )}
-    >
-      <item.icon size={24} />
-      <h2>{item.name}</h2>
+    <Link to={item.path} ref={ref} className={className}>
+      <Button variant={`${isActive ? 'secondary' : 'ghost'}`} className='flex w-full flex-row justify-start gap-2'>
+        {item.icon ? <item.icon size={20} /> : <ShieldQuestion />}
+        {item.name}
+      </Button>
     </Link>
   )
 })

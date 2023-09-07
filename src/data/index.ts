@@ -11,6 +11,26 @@ const superData = {
       orderNumber: 0,
       img: '',
       description: 'string'
+    },
+    {
+      companyID: 1,
+      name: 'TickTok',
+      address: '123 Main Street',
+      createdAt: 'string',
+      updatedAt: 'string',
+      orderNumber: 0,
+      img: '',
+      description: 'string'
+    },
+    {
+      companyID: 2,
+      name: 'Google',
+      address: '123 Main Street',
+      createdAt: 'string',
+      updatedAt: 'string',
+      orderNumber: 0,
+      img: '',
+      description: 'string'
     }
   ] as Company[]
 }

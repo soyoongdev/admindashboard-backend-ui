@@ -1,13 +1,11 @@
 import React, { forwardRef } from 'react'
-import { cn } from '~/utils/cn'
+import { cn } from '~/lib/utils'
 
-interface VStackProps extends React.HTMLAttributes<HTMLDivElement> {
-  spacing?: number | undefined
-}
+interface VStackProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const VStack = forwardRef<HTMLDivElement, VStackProps>(({ spacing, className, children }, ref) => {
+const VStack = forwardRef<HTMLDivElement, VStackProps>(({ className, children }, ref) => {
   return (
-    <div className={cn(`flex flex-col gap-${spacing}`, className)} ref={ref}>
+    <div className={cn('flex flex-col', className)} ref={ref}>
       {children}
     </div>
   )
