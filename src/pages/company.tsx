@@ -1,30 +1,21 @@
+import PageLayout from '~/components/layout/page-layout'
 import { VStack } from '~/components/layout/stack'
-import Breadcrumb from '~/components/ui/breadcrumb'
-import { usePath } from '~/hooks/usePath'
-import CompanyList from './company-list'
+import { DataTable } from '~/components/ui/data-table/data-table'
+import { columns } from '~/components/ui/data-table/data-table-column'
+import tasks from '~/data/tasks'
 
 const CompanyPage = () => {
-  const path = usePath()
+  // const tasks = await fetch('src/data/tasks.json')
+  // const pathname = usePath()
 
   return (
-    <VStack className=''>
-      <CompanyList />
-      {/* <ul>
-        {path.paths.map((item, index) => {
-          return (
-            <li
-              key={index}
-              className={cn('', {
-                underline: item === path.lastPath
-              })}
-            >
-              {item}
-            </li>
-          )
-        })}
-      </ul> */}
-      <Breadcrumb />
-    </VStack>
+    <>
+      <PageLayout>
+        <VStack className='hidden h-full gap-10 md:flex'>
+          <DataTable data={tasks} columns={columns} />
+        </VStack>
+      </PageLayout>
+    </>
   )
 }
 

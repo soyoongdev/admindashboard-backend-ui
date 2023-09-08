@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom'
 import { usePath } from '~/hooks/usePath'
 import { cn } from '~/lib/utils'
 
-interface BreadcrumbProps extends React.HTMLAttributes<HTMLDivElement> {
-  separator: React.ReactNode | '/'
+interface BreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
+  separator?: React.ReactNode | '/'
 }
 
-const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(({ separator = '/' }) => {
+const Breadcrumb = forwardRef<HTMLElement, BreadcrumbProps>(({ separator = '/' }, ref) => {
   const path = usePath()
 
   return (
-    <section className='flex flex-col'>
+    <section ref={ref} className='flex flex-col'>
       <nav className='flex flex-row gap-2'>
         <ol className='flex flex-wrap items-center gap-2 text-muted-foreground'>
           {path.paths.map((route, index) => {
@@ -22,7 +22,10 @@ const Breadcrumb = forwardRef<HTMLDivElement, BreadcrumbProps>(({ separator = '/
                 {isLast ? (
                   <span className='text-foreground'>{route}</span>
                 ) : (
-                  <Link className='rounded-sm px-[4px] py-[2px] hover:bg-muted hover:text-foreground' to={routeTo}>
+                  <Link
+                    className='flex h-[22px] items-center rounded-sm px-[4px] hover:bg-muted hover:text-foreground'
+                    to={routeTo}
+                  >
                     {route}
                   </Link>
                 )}

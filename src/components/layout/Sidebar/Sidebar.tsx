@@ -10,7 +10,9 @@ export function Sidebar({ className }: SidebarProps) {
   const location = useLocation()
 
   return (
-    <div className={cn('my-4 w-full max-w-[267px] border-r pb-12', className)}>
+    <div
+      className={cn('fixed left-0 right-0 top-0 z-[99] h-full w-[var(--sidebar)] border-r bg-background', className)}
+    >
       <div className='w-full space-y-4 py-4'>
         <div className='w-full px-3 py-2'>
           <TypographyH3 className='mb-2 px-4 tracking-tight'>Discover</TypographyH3>
